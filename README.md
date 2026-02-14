@@ -1,5 +1,5 @@
 
-# CodeX Tickets - Discord Support Bot
+# Aura Tickets - Discord Support Bot
 
 A comprehensive Discord bot for managing support tickets with advanced features like categorization, rating system, and automated responses.
 
@@ -138,8 +138,8 @@ The bot uses SQLite for data storage. The database file (`bot.db` by default) co
 
 ### 8. Support & Development
 
-- **Support Server**: [CodeX Development Discord](https://discord.gg/codexdev)
-- **Developer**: [CodeX Development Team](https://discord.gg/codexdev)
+- **Support Server**: [RenderByte](https://discord.gg/Renderbyte)
+- **Developer**: [RenderByte](https://discord.gg/Renderbyte)
 - **Issues**: Create tickets in our support server for bug reports and feature requests
 - **Documentation**: Full documentation available in our support server
 - **Community**: Join our Discord for updates, tips, and community discussions
@@ -160,10 +160,10 @@ The bot includes automatic reconnection handling and will restart if it encounte
 
 ## 🏆 Credits & Attribution
 
-**CodeX Tickets** is proudly developed and maintained by **[CodeX Development Team](https://discord.gg/codexdev)**
+**Aura Tickets** is proudly developed and maintained by **[RenderByte](https://discord.gg/Renderbyte)**
 
-### 🌟 CodeX Development
-- **Discord Server**: [https://discord.gg/codexdev](https://discord.gg/codexdev)
+### 🌟 RenderByte
+- **Discord Server**: [RenderByte](https://discord.gg/Renderbyte)
 - **Specialization**: Premium Discord bots and development services
 - **Support**: 24/7 community support and assistance
 - **Services**: Custom bot development, server setup, and consultation
@@ -177,6 +177,6 @@ Visit our Discord server for:
 
 ---
 
-**Built with ❤️ by [CodeX Development Team](https://discord.gg/codexdev)**
+**Built with ❤️ by [RenderByte](https://discord.gg/Renderbyte)**
 
 *Join our community for premium Discord solutions and expert support!*
