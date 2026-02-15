@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HostBotFree | Access Blocked</title>
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --border:#22305a;
+      --text:#e9ecf1;
+      --muted:#a9b4d6;
+      --danger:#ff5a5a;
+      --accent:#4a7dff;
+    }
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:24px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+      background: radial-gradient(circle at top, #2a1414, var(--bg));
+      color:var(--text);
+    }
+
+    .card{
+      width:min(640px, 94vw);
+      background:rgba(18,26,51,.95);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 24px 70px rgba(0,0,0,.55);
+    }
+
+    .top{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:.2px;
+    }
+
+    .badge{
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid var(--border);
+      color:var(--danger);
+    }
+
+    h1{
+      margin:16px 0 8px;
+      font-size:20px;
+    }
+
+    p{
+      margin:0;
+      line-height:1.55;
+      color:var(--muted);
+    }
+
+    .box{
+      margin-top:16px;
+      background:#0b1020;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      font-size:13px;
+    }
+
+    .row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    code{
+      background:#0b1020;
+      border:1px solid var(--border);
+      padding:3px 8px;
+      border-radius:10px;
+      font-size:12px;
+      color:var(--text);
+    }
+
+    .hint{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .btns{
+      display:flex;
+      gap:10px;
+      margin-top:16px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      appearance:none;
+      border-radius:12px;
+      border:1px solid var(--border);
+      padding:10px 14px;
+      background:#0b1020;
+      color:var(--text);
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    button.primary{
+      background:var(--accent);
+      border-color:transparent;
+    }
+
+    button:active{
+      transform:translateY(1px);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="top">
+      <div class="brand">HostBotFree</div>
+      <div class="badge">Blocked by firewall</div>
+    </div>
+
+    <h1>Access denied</h1>
+    <p>
+      Your request was blocked by our Web Application Firewall
+      because it matched a security rule designed to protect our services.
+    </p>
+
+    <div class="box">
+      <div class="row">
+        <span style="color:var(--muted)">HTTP Status</span>
+        <code>403 Forbidden</code>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span style="color:var(--muted)">Request ID</span>
+        <code id="rid">loading</code>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span style="color:var(--muted)">Timestamp</span>
+        <code id="ts">loading</code>
+      </div>
+    </div>
+
+    <div class="btns">
+      <button class="primary" onclick="location.reload()">Retry</button>
+      <button onclick="history.length>1 ? history.back() : (location.href='/')">
+        Go back
+      </button>
+    </div>
+
+    <div class="hint">
+      If you believe this is a mistake:
+      disable VPN/proxy, ensure cookies & JavaScript are enabled,
+      then try again or contact HostBotFree support with the Request ID.
+    </div>
+  </div>
+
+  <script>
+    const rid = (crypto?.randomUUID
+      ? crypto.randomUUID()
+      : (Date.now()+"-"+Math.random().toString(16).slice(2)));
+    document.getElementById("rid").textContent = rid;
+    document.getElementById("ts").textContent = new Date().toISOString();
+  </script>
+
+</body>
+</html>
