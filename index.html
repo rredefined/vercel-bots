@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HostBotFree | Security Check</title>
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121a33; --border:#22305a;
+      --text:#e9ecf1; --muted:#a9b4d6; --accent:#4a7dff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+      background: radial-gradient(circle at top, #172149, var(--bg));
+      color:var(--text);
+    }
+    .card{
+      width:min(620px, 92vw);
+      background:rgba(18,26,51,.92);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      box-shadow:0 24px 70px rgba(0,0,0,.55);
+    }
+    .top{display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+    .brand{font-weight:900; letter-spacing:.2px; font-size:20px}
+    .pill{
+      border:1px solid var(--border);
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    h1{margin:14px 0 8px; font-size:18px}
+    p{margin:0; color:var(--muted); line-height:1.5}
+    .bar{
+      height:10px; margin-top:16px;
+      background:#0b1020; border:1px solid var(--border);
+      border-radius:999px; overflow:hidden;
+    }
+    .fill{
+      height:100%; width:30%;
+      background:linear-gradient(90deg, transparent, var(--accent), transparent);
+      animation:move 1.4s infinite ease-in-out;
+    }
+    @keyframes move{0%{transform:translateX(-120%)}50%{transform:translateX(220%)}100%{transform:translateX(-120%)}}
+    .grid{display:grid; gap:10px; margin-top:14px}
+    .row{display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap}
+    code{
+      background:#0b1020; border:1px solid var(--border);
+      padding:2px 8px; border-radius:10px; color:var(--text); font-size:12px;
+    }
+    .hint{font-size:12px; margin-top:14px; color:var(--muted)}
+    .btns{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
+    button{
+      appearance:none; border-radius:12px; border:1px solid var(--border);
+      padding:10px 12px; background:#0b1020; color:var(--text);
+      cursor:pointer; font-weight:700;
+    }
+    button.primary{background:var(--accent); border-color:transparent}
+    button:active{transform:translateY(1px)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="brand">HostBotFree</div>
+      <div class="pill">Protection active</div>
+    </div>
+
+    <h1>Security verification in progress</h1>
+    <p>
+      We’re temporarily running extra checks to protect our free infrastructure from abuse and DDoS traffic.
+      Normal access should resume automatically.
+    </p>
+
+    <div class="bar"><div class="fill"></div></div>
+
+    <div class="grid">
+      <div class="row">
+        <div class="hint">Request ID: <code id="rid">loading</code></div>
+        <div class="hint">Time: <code id="ts">loading</code></div>
+      </div>
+      <div class="hint">
+        If you keep seeing this: disable VPN/proxy, enable JavaScript, then try again.
+      </div>
+    </div>
+
+    <div class="btns">
+      <button class="primary" onclick="location.reload()">Retry</button>
+      <button onclick="history.length>1 ? history.back() : (location.href='/')">Go back</button>
+    </div>
+  </div>
+
+  <script>
+    const rid = (crypto?.randomUUID ? crypto.randomUUID() : (Date.now()+"-"+Math.random().toString(16).slice(2)));
+    document.getElementById("rid").textContent = rid;
+    document.getElementById("ts").textContent = new Date().toISOString();
+  </script>
+</body>
+</html>
