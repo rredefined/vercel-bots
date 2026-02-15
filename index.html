@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HostBotFree | Security Check</title>
+  <title>HostBotFree | Verification</title>
   <style>
     :root{
       --bg:#0b1020; --card:#121a33; --border:#22305a;
@@ -17,8 +17,8 @@
       color:var(--text);
     }
     .card{
-      width:min(620px, 92vw);
-      background:rgba(18,26,51,.92);
+      width:min(640px, 94vw);
+      background:rgba(18,26,51,.94);
       border:1px solid var(--border);
       border-radius:18px;
       padding:22px;
@@ -46,18 +46,31 @@
       animation:move 1.4s infinite ease-in-out;
     }
     @keyframes move{0%{transform:translateX(-120%)}50%{transform:translateX(220%)}100%{transform:translateX(-120%)}}
-    .grid{display:grid; gap:10px; margin-top:14px}
-    .row{display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap}
+
+    .captcha-wrap{
+      margin-top:16px;
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:#0b1020;
+    }
+    .captcha-title{
+      font-size:13px;
+      font-weight:800;
+      color:var(--text);
+      margin:0 0 8px;
+    }
+    .hint{font-size:12px; margin-top:12px; color:var(--muted)}
     code{
       background:#0b1020; border:1px solid var(--border);
       padding:2px 8px; border-radius:10px; color:var(--text); font-size:12px;
     }
-    .hint{font-size:12px; margin-top:14px; color:var(--muted)}
+    .row{display:flex; gap:10px; justify-content:space-between; flex-wrap:wrap}
     .btns{display:flex; gap:10px; margin-top:14px; flex-wrap:wrap}
     button{
       appearance:none; border-radius:12px; border:1px solid var(--border);
       padding:10px 12px; background:#0b1020; color:var(--text);
-      cursor:pointer; font-weight:700;
+      cursor:pointer; font-weight:800;
     }
     button.primary{background:var(--accent); border-color:transparent}
     button:active{transform:translateY(1px)}
@@ -67,30 +80,35 @@
   <div class="card">
     <div class="top">
       <div class="brand">HostBotFree</div>
-      <div class="pill">Protection active</div>
+      <div class="pill">Verification required</div>
     </div>
 
-    <h1>Security verification in progress</h1>
+    <h1>Please complete the check</h1>
     <p>
-      We’re temporarily running extra checks to protect our free infrastructure from abuse and DDoS traffic.
-      Normal access should resume automatically.
+      To protect HostBotFree from bots and abuse, we need to verify this request.
+      Complete the CAPTCHA below to continue.
     </p>
 
     <div class="bar"><div class="fill"></div></div>
 
-    <div class="grid">
-      <div class="row">
-        <div class="hint">Request ID: <code id="rid">loading</code></div>
-        <div class="hint">Time: <code id="ts">loading</code></div>
-      </div>
-      <div class="hint">
-        If you keep seeing this: disable VPN/proxy, enable JavaScript, then try again.
-      </div>
+    <!-- REQUIRED by Cloudflare for challenge-type custom error pages -->
+    <div class="captcha-wrap">
+      <div class="captcha-title">CAPTCHA</div>
+      ::CAPTCHA_BOX::
+    </div>
+
+    <div class="row hint">
+      <div>Request ID: <code id="rid">loading</code></div>
+      <div>Time: <code id="ts">loading</code></div>
     </div>
 
     <div class="btns">
       <button class="primary" onclick="location.reload()">Retry</button>
       <button onclick="history.length>1 ? history.back() : (location.href='/')">Go back</button>
+    </div>
+
+    <div class="hint">
+      If this keeps happening, disable VPN/proxy and allow JavaScript & cookies, then refresh.
     </div>
   </div>
 
