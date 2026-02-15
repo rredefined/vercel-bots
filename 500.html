@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HostBotFree | Service Issue</title>
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121a33; --border:#22305a;
+      --text:#e9ecf1; --muted:#a9b4d6; --accent:#4a7dff; --warn:#ffcc66;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+      background: radial-gradient(circle at top, #1b1f45, var(--bg));
+      color:var(--text);
+    }
+    .card{
+      width:min(720px, 94vw);
+      background:rgba(18,26,51,.95);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px;
+      box-shadow:0 24px 70px rgba(0,0,0,.55);
+    }
+    .top{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .brand{font-size:20px; font-weight:900; letter-spacing:.2px}
+    .badge{
+      padding:6px 12px; border-radius:999px; font-size:12px; font-weight:900;
+      border:1px solid var(--border); color:var(--warn);
+    }
+    h1{margin:16px 0 8px; font-size:20px}
+    p{margin:0; color:var(--muted); line-height:1.55}
+    .box{
+      margin-top:16px; padding:14px;
+      background:#0b1020; border:1px solid var(--border);
+      border-radius:14px;
+    }
+    .row{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+    code{
+      background:#0b1020; border:1px solid var(--border);
+      padding:3px 8px; border-radius:10px; font-size:12px; color:var(--text);
+    }
+    .btns{display:flex; gap:10px; margin-top:16px; flex-wrap:wrap}
+    button{
+      appearance:none; border-radius:12px; border:1px solid var(--border);
+      padding:10px 14px; background:#0b1020; color:var(--text);
+      cursor:pointer; font-weight:900;
+    }
+    button.primary{background:var(--accent); border-color:transparent}
+    button:active{transform:translateY(1px)}
+    .hint{margin-top:12px; font-size:12px; color:var(--muted)}
+    /* You can style Cloudflare's 5xx diagnostics box like this */
+    #cf-error-details{ margin-top:14px; }
+    #cf-error-details, #cloudflare-error-500s-box{
+      border-radius:14px !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="brand">HostBotFree</div>
+      <div class="badge">Temporary service issue</div>
+    </div>
+
+    <h1>We couldn’t process your request</h1>
+    <p>
+      Our server (or an upstream service) returned an unexpected error.
+      Please try again in a moment.
+    </p>
+
+    <div class="box">
+      <div class="row">
+        <span style="color:var(--muted)">Type</span>
+        <code>5XX Server Error</code>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span style="color:var(--muted)">Ray ID</span>
+        <code>::RAY_ID::</code>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span style="color:var(--muted)">Your IP</span>
+        <code>::CLIENT_IP::</code>
+      </div>
+      <div class="row" style="margin-top:8px">
+        <span style="color:var(--muted)">Region</span>
+        <code>::GEO::</code>
+      </div>
+    </div>
+
+    <div class="btns">
+      <button class="primary" onclick="location.reload()">Retry</button>
+      <button onclick="location.href='/'">Home</button>
+    </div>
+
+    <div class="hint">
+      If this continues, contact HostBotFree support and share the Ray ID above.
+    </div>
+
+    <!-- REQUIRED for 5XX error pages in Cloudflare -->
+    <div id="cf-error-details">
+      ::CLOUDFLARE_ERROR_500S_BOX::
+    </div>
+  </div>
+</body>
+</html>
